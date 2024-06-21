@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>たからのありかを探せ！</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        #output {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+        #changeTextButton {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: none;
+            background-color: #008CBA;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        #changeTextButton:hover {
+            background-color: #005f73;
+        }
+    </style>
+</head>
+<body>
+    <h1>たからのありかを探せ！</h1>
+    <button id="changeTextButton">Push</button>
+    <div id="output">< Hint ></Hint></div>
+
+    <script>
+        // パスワードのプロンプト
+        const password = 'Miyakana'; // パスワードを設定
+        let enteredPassword = prompt('パスワードを入力してください:');
+        
+        // パスワードが一致しない場合、ページを閉じる
+        if (enteredPassword !== password) {
+            alert('パスワードが間違っています。');
+            window.location.href = 'about:blank'; // ページを閉じる（空のページを表示）
+        }
+
+        const button = document.getElementById('changeTextButton');
+        const output = document.getElementById('output');
+        const texts = ['た', 'か', 'ら', 'の', 'あ', 'り', 'か', 'は', '2', 'G'];
+        let currentIndex = 0;
+
+        button.addEventListener('click', () => {
+            if (currentIndex < texts.length) {
+                output.textContent = texts[currentIndex];
+                currentIndex++;
+            } else {
+                output.textContent = '2Gに向かえ！';
+            }
+        });
+    </script>
+</body>
+</html>
